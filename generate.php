@@ -37,6 +37,10 @@ $coupons = [
         'signature' => 7634,
         'description' => '$15 off $50 coupons',
     ],
+    [
+        'signature' => 8373,
+        'description' => '$20 off $100 coupons',
+    ],
 ];
 
 foreach ($coupons as $coupon) {
