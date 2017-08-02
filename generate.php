@@ -30,11 +30,11 @@ function generateUpcCheckdigit($upc_code)
 
 $coupons = [
     [
-        'signature' => 7685,
+        'signature' => 7686,
         'description' => '10% off coupons',
     ],
     [
-        'signature' => 7632,
+        'signature' => 7634,
         'description' => '$15 off $50 coupons',
     ],
 ];
