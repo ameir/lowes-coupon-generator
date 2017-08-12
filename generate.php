@@ -34,7 +34,7 @@ $coupons = [
         'description' => '10% off coupons',
     ],
     [
-        'signature' => 7634,
+        'signature' => 7655,
         'description' => '$15 off $50 coupons',
     ],
     [
