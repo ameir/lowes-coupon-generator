@@ -1,6 +1,8 @@
 #!/usr/bin/env php
 <?php
 
+require __DIR__ . '/vendor/autoload.php';
+
 // http://www.codediesel.com/php/generating-upc-check-digit/
 function generateUpcCheckdigit($upc_code)
 {
@@ -58,9 +60,22 @@ $coupons = [
 
 foreach ($coupons as $coupon) {
     echo "{$coupon['description']}:" . PHP_EOL;
+
+    // create dir for barcode images
+    $dir = __DIR__ . '/generated/' . date('c') . "/{$coupon['description']}";
+    mkdir($dir, 0755, true);
+
     for ($i = 0; $i < 10; $i++) {
         $upc_code = '47000' . rand(0, 4) . rand(1000, 9999) . $coupon['signature'];
-        echo $upc_code . generateUpcCheckdigit($upc_code) . PHP_EOL;
+        $barcode = $upc_code . generateUpcCheckdigit($upc_code);
+        echo $barcode . PHP_EOL;
+
+        // save barcode image locally
+        $generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
+        $barcodeString = $generator->getBarcode($barcode, $generator::TYPE_CODE_128, 1, 50);
+
+        $filename = $dir . '/barcode-' . $barcode . '.png';
+        file_put_contents($filename, $barcodeString);
     }
     echo PHP_EOL;
 }
