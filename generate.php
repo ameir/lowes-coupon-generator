@@ -97,7 +97,7 @@ foreach ($coupons as $coupon) {
         // write date
         imagestring($dest, 4, 970, 127, $coupon['expires'], $textcolor);
 
-        $filename = $dir . '/barcode-' . $barcode . '.png';
+        $filename = "{$dir}/{$coupon['description']}-{$barcode}.png";
         imagegif($dest, $filename);
 
         imagedestroy($src);
