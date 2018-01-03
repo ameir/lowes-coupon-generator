@@ -33,40 +33,45 @@ function generateUpcCheckdigit($upc_code)
 
 $coupons = [
     [
-        'signature' => '0109',
+        'signature' => '0110',
         'description' => '10% off',
-        'expires' => '12/27/2017',
+        'expires' => '1/28/2018',
     ],
     [
-        'signature' => 9217,
+        'signature' => '9218',
         'description' => '$10 off $50',
-        'expires' => '11/30/2017',
+        'expires' => '1/28/2018',
     ],
     [
-        'signature' => 9345,
+        'signature' => '9345',
         'description' => '$15 off $75',
-        'expires' => '12/27/2017',
+        'expires' => '1/28/2018',
     ],
     [
-        'signature' => '9381',
+        'signature' => '9382',
         'description' => '$20 off $100',
-        'expires' => '12/27/2017',
+        'expires' => '1/28/2018',
     ],
     [
-        'signature' => 9387,
+        'signature' => '9388',
         'description' => '$40 off $200',
-        'expires' => '12/27/2017',
+        'expires' => '1/28/2018',
     ],
     [
-        'signature' => 9393,
+        'signature' => '9394',
         'description' => '$60 off $400',
-        'expires' => '12/27/2017',
+        'expires' => '1/28/2018',
     ],
 ];
 
 $date = date('c');
 foreach ($coupons as $coupon) {
     echo "{$coupon['description']}:" . PHP_EOL;
+
+    if (time() > strtotime($coupon['expires'])) {
+        echo 'Coupon already expired.' . PHP_EOL . PHP_EOL;
+        continue;
+    }
 
     // create dir for barcode images
     $dir = __DIR__ . "/generated/{$date}/{$coupon['description']}";
