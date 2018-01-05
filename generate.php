@@ -10,24 +10,20 @@ function generateUpcCheckdigit($upc_code)
     $even_total = 0;
 
     for ($i = 1; $i <= strlen($upc_code); $i++) {
-        //echo "Checking i=$i ({$upc_code[$i - 1]})...\n";
         if ($i % 2 == 0) {
-            //echo "even\n";
-            /* Sum even digits */
+            // Sum even digits
             $even_total += $upc_code[$i - 1];
         } else {
-            //echo "odd\n";
-            /* Sum odd digits */
+            // Sum odd digits
             $odd_total += $upc_code[$i - 1];
         }
     }
 
     $sum = (3 * $even_total) + $odd_total;
-    //echo "Sum: $sum\n";
-    /* Get the remainder MOD 10*/
+    // Get the remainder MOD 10
     $check_digit = $sum % 10;
 
-    /* If the result is not zero, subtract the result from ten. */
+    // If the result is not zero, subtract the result from ten.
     return ($check_digit > 0) ? 10 - $check_digit : $check_digit;
 }
 
