@@ -33,7 +33,7 @@ function generateUpcCheckdigit($upc_code)
 
 $coupons = [
     [
-        'signature' => '0110',
+        'signature' => '0151',
         'description' => '10% off',
         'expires' => '1/28/2018',
     ],
@@ -43,7 +43,7 @@ $coupons = [
         'expires' => '1/28/2018',
     ],
     [
-        'signature' => '9345',
+        'signature' => '9346',
         'description' => '$15 off $75',
         'expires' => '1/28/2018',
     ],
