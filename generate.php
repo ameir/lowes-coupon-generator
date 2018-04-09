@@ -29,14 +29,14 @@ function generateUpcCheckdigit($upc_code)
 
 $coupons = [
     [
-        'signature' => '0603',
+        'signature' => '0602',
         'description' => '10% off',
-        'expires' => '3/30/2018',
+        'expires' => '4/30/2018',
     ],
     [
-        'signature' => '0289',
+        'signature' => '0779',
         'description' => '$10 off $50',
-        'expires' => '3/28/2018',
+        'expires' => '4/30/2018',
     ],
     [
         'signature' => '9359',
@@ -44,9 +44,9 @@ $coupons = [
         'expires' => '3/28/2018',
     ],
     [
-        'signature' => '0668',
+        'signature' => '0759',
         'description' => '$20 off $100',
-        'expires' => '2/28/2018',
+        'expires' => '4/28/2018',
     ],
     [
         'signature' => '9389',
@@ -66,7 +66,7 @@ $coupons = [
         [
         'signature' => '8800',
         'description' => '$30 off',
-        'expires' => '3/30/2018',
+        'expires' => '5/30/2018',
     ],
 ];
 
@@ -90,7 +90,7 @@ foreach ($coupons as $coupon) {
 
         // generate barcode image
         $generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
-        $barcodeString = $generator->getBarcode($barcode, $generator::TYPE_CODE_128, 1.5, 55);
+        $barcodeString = $generator->getBarcode($barcode, $generator::TYPE_CODE_128, 2, 60);
 
         $src = imagecreatefromstring($barcodeString);
         if (!$src) {
@@ -103,7 +103,7 @@ foreach ($coupons as $coupon) {
         $textcolor = imagecolorallocate($dest, 0, 0, 0);
 
         // write barcode
-        imagestring($dest, 5, 720, 465, $barcode, $textcolor);
+        imagestring($dest, 5, 750, 475, $barcode, $textcolor);
 
         // write date
         imagestring($dest, 4, 970, 127, $coupon['expires'], $textcolor);
