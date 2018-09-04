@@ -29,14 +29,14 @@ function generateUpcCheckdigit($upc_code)
 
 $coupons = [
     [
-        'signature' => '0602',
+        'signature' => '0620',
         'description' => '10% off',
-        'expires' => '4/30/2018',
+        'expires' => '9/30/2018',
     ],
     [
-        'signature' => '0779',
+        'signature' => '0970',
         'description' => '$10 off $50',
-        'expires' => '4/30/2018',
+        'expires' => '9/30/2018',
     ],
     [
         'signature' => '9359',
@@ -44,9 +44,9 @@ $coupons = [
         'expires' => '3/28/2018',
     ],
     [
-        'signature' => '0759',
+        'signature' => '1134',
         'description' => '$20 off $100',
-        'expires' => '4/28/2018',
+        'expires' => '9/30/2018',
     ],
     [
         'signature' => '9389',
@@ -66,7 +66,7 @@ $coupons = [
         [
         'signature' => '8800',
         'description' => '$30 off',
-        'expires' => '5/30/2018',
+        'expires' => '6/30/2018',
     ],
 ];
 
