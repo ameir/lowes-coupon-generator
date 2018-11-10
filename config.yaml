@@ -1,0 +1,11 @@
+---
+coupons:
+- signature: 0619
+  description: 10% off
+  expires: 11/30/2018
+- signature: 0993
+  description: $10 off $50
+  expires: 11/30/2018
+- signature: "1144"
+  description: $20 off $100
+  expires: 11/30/2018

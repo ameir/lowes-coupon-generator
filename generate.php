@@ -27,48 +27,7 @@ function generateUpcCheckdigit($upc_code)
     return ($check_digit > 0) ? 10 - $check_digit : $check_digit;
 }
 
-$coupons = [
-    [
-        'signature' => '0620',
-        'description' => '10% off',
-        'expires' => '9/30/2018',
-    ],
-    [
-        'signature' => '0970',
-        'description' => '$10 off $50',
-        'expires' => '9/30/2018',
-    ],
-    [
-        'signature' => '9359',
-        'description' => '$15 off $75',
-        'expires' => '3/28/2018',
-    ],
-    [
-        'signature' => '1134',
-        'description' => '$20 off $100',
-        'expires' => '9/30/2018',
-    ],
-    [
-        'signature' => '9389',
-        'description' => '$40 off $200',
-        'expires' => '2/28/2018',
-    ],
-    [
-        'signature' => '9395',
-        'description' => '$60 off $400',
-        'expires' => '2/28/2018',
-    ],
-    [
-        'signature' => '0084',
-        'description' => '$20 off',
-        'expires' => '3/30/2018',
-    ],
-        [
-        'signature' => '8800',
-        'description' => '$30 off',
-        'expires' => '6/30/2018',
-    ],
-];
+$coupons = yaml_parse_file(__DIR__ . '/config.yaml')['coupons'];
 
 $date = date('c');
 foreach ($coupons as $coupon) {
@@ -83,8 +42,9 @@ foreach ($coupons as $coupon) {
     $dir = __DIR__ . "/generated/{$date}/{$coupon['description']}";
     mkdir($dir, 0755, true);
 
+    $prefix = $coupon['prefix'] ?? '50000';
     for ($i = 0; $i < 10; $i++) {
-        $upc_code = '47000' . rand(0, 4) . rand(1000, 9999) . $coupon['signature'];
+        $upc_code = $prefix . rand(0, 4) . rand(1000, 9999) . $coupon['signature'];
         $barcode = $upc_code . generateUpcCheckdigit($upc_code);
         echo $barcode . PHP_EOL;
 
